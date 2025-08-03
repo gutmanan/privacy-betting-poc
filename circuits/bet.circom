@@ -1,13 +1,25 @@
 pragma circom 2.0.0;
 
-template BetCommitment() {
-    signal input videoId;
+include "lib/poseidon.circom";
+
+template Bet() {
+    // Public inputs
+    signal input entryId;
     signal input stake;
-    signal input secret;
+
+    // Private input
+    signal input userSecret;
+
+    // Output
     signal output commitment;
 
-    // For demo purposes: just add values (replace with Poseidon/MiMC hash for production)
-    commitment <== videoId + stake + secret;
+    // Poseidon hash commitment
+    component poseidon = Poseidon(3);
+    poseidon.inputs[0] <== entryId;
+    poseidon.inputs[1] <== stake;
+    poseidon.inputs[2] <== userSecret;
+
+    commitment <== poseidon.out;
 }
 
-component main = BetCommitment();
+component main = Bet();

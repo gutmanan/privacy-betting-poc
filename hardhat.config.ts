@@ -1,16 +1,19 @@
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-waffle";
-import "dotenv/config";
+import "@nomicfoundation/hardhat-toolbox";
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.18",
-  networks: {
-    sepolia: {
-      url: process.env.SEPOLIA_RPC_URL || "",
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-    },
+  solidity: {
+    version: "0.8.18",
+    settings: {
+      optimizer: { enabled: true, runs: 200 }
+    }
   },
+  paths: {
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts"
+  }
 };
 
 export default config;

@@ -1,0 +1,45 @@
+# Node & package manager
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build artifacts
+artifacts/
+cache/
+build/
+out/
+coverage/
+
+# Circom compilation outputs
+*.r1cs
+*.sym
+*.zkey
+*.ptau
+*.wtns
+*_js/
+*.log
+
+# Proof files (generated at runtime)
+proof.json
+public.json
+tallyProof.json
+tallyPublic.json
+
+# Hardhat specific
+.env
+typechain/
+typechain-types/
+
+# VSCode & IDE settings
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+npm-debug.log*
+tsconfig.tsbuildinfo

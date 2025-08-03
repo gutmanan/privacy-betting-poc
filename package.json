@@ -1,18 +1,27 @@
 {
-  "name": "privacy-betting-poc",
+  "name": "zk-betting",
   "version": "1.0.0",
-  "description": "Privacy-preserving betting PoC with Hardhat, Solidity, Circom, and Next.js",
+  "description": "Privacy-preserving betting dApp using Circom & zkSNARKs",
   "scripts": {
+    "compile": "hardhat compile",
     "test": "hardhat test",
-    "deploy": "hardhat run scripts/deploy.ts --network sepolia"
+    "setup": "ts-node scripts/setup.ts",
+    "deploy": "hardhat run scripts/deploy.ts --network localhost",
+    "generate-proof": "ts-node scripts/generateProof.ts",
+    "generate-tally-proof": "ts-node scripts/generateTallyProof.ts"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "circomlib": "^2.0.5",
+    "circomlibjs": "^0.1.7",
+    "poseidon-solidity": "^0.0.5",
+    "snarkjs": "^0.7.2"
   },
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.2.1",
-    "@nomiclabs/hardhat-waffle": "^2.0.3",
-    "chai": "^4.3.7",
-    "dotenv": "^16.0.3",
-    "ethers": "^6.0.0",
-    "hardhat": "^2.20.0",
-    "typescript": "^5.2.2"
+    "@types/circomlibjs": "^0.1.6",
+    "@types/snarkjs": "^0.7.9",
+    "hardhat": "^2.17.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
   }
 }
